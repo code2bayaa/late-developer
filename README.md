@@ -1,36 +1,36 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Brian Wekesa Portfolio
 
-## Getting Started
+Welcome to the portfolio of Brian Wekesa, a software engineer passionate about building innovative and scalable web applications. This portfolio showcases my skills, experience, and projects.
 
-First, run the development server:
+## How to Reach Me
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+*   **Email:** [brianwekesa@example.com](mailto:brianwekesa254@outlook.com) (Replace with actual email)
+*   **LinkedIn:** [linkedin.com/in/brianwekesa](https://linkedin.com/in/late-developers) (Replace with actual LinkedIn profile)
+*   **GitHub:** [github.com/brianwekesa](https://github.com/code2bayaa) (Replace with actual GitHub profile)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Institutions Worked For
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+*   [Company A](https://www.example.com/companyA) (Replace with actual company and link) - Software Engineer (2023-2025)
+*   [Company B](https://www.example.com/companyB) (Replace with actual company and link) - Web Developer (2021-2023)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Skills Acquired
 
-## Learn More
+*   **Frontend Development:** React, Next.js, HTML, CSS, JavaScript, TypeScript, Tailwind CSS
+*   **Backend Development:** Node.js, Express, REST APIs, GraphQL
+*   **Databases:** MongoDB, PostgreSQL
+*   **DevOps:** Docker, AWS, Linux
+*   **Other:** Git, GitHub, Agile Development
 
-To learn more about Next.js, take a look at the following resources:
+## Projects Done
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Here are some of the projects I've worked on, along with the technologies used:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+*   **Project 1: E-commerce Platform**
+    *   **Description:** A fully functional e-commerce platform with user authentication, product catalog, shopping cart, and checkout process.
+    *   **Tech Used:** Next.js, React, Node.js, Express, MongoDB, Tailwind CSS
+*   **Project 2: Portfolio Website**
+    *   **Description:** A personal portfolio website to showcase my skills and projects.
+    *   **Tech Used:** Next.js, React, Tailwind CSS, GSAP
+*   **Project 3: API for Email Sending**
+    *   **Description:** An API to send emails using NodeMailer.
+    *   **Tech Used:** Node.js, Express, NodeMailer
