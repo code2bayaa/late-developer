@@ -10,8 +10,15 @@ Welcome to the portfolio of Brian Wekesa, a software engineer passionate about b
 
 ## Institutions Worked For
 
-*   [Company A](https://www.example.com/companyA) (Replace with actual company and link) - Software Engineer (2023-2025)
-*   [Company B](https://www.example.com/companyB) (Replace with actual company and link) - Web Developer (2021-2023)
+*   [Rifkins College](https://www.rifkinscollege.com)
+*   [Ancilla Vocational Training College](https://www.ancilla.netlify.app)
+*   [Turing Agency](https://turing.com)
+*   [TUM University](https://tum.ac.ke)
+*   [KENGEN](https://kengen.co.ke)
+*   [MOI UNIVERISTY](https://mu.ac.ke)
+*   [CWID](https://collabowid.org)
+*   [#wefoshe](https://weforshemovement.org)
+
 
 ## Skills Acquired
 
