@@ -145,7 +145,7 @@ const PROJECTS = () => {
                     {projects.map(({icon,description,name,link}, i) => (
                         <SwiperSlide key={i} className=" h-[300px] lg:w-[60%] sm:w-[100%] md:w-[100%]">
                             <div className="w-[100%] h-[300px] flex flex-wrap">
-                                <img src={icon} alt={`slide ${i}`} className="w-[60%] h-[100%] object-cover" />
+                                <img src={icon} alt={`slide ${i}`} className="lg:w-[60%] sm:w-[100%] md:w-[100%] h-[100%] object-cover" />
                                 <div className="lg:w-[40%] bg-zinc-900 text-[#fff] sm:w-[100%] px-4 py-4 md:w-[100%]">
                                     <h1>{name}</h1>
                                     <article>{description}</article>

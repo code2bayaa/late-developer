@@ -1,12 +1,18 @@
 import FOX from "./Fox"
 import swal from "sweetalert";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const CONTACT = () => {
     const formRef = useRef();
     const [form, setForm] = useState({name: "", email: "", message: "", subject : ""});
     const [loading, setLoading] = useState(false);
     const [currentAnimation, setCurrentAnimation] = useState("idle");
+    const [windowWidth, setWindowWidth] = useState(null);
+
+    useEffect(() => {
+        // Set initial window width
+        setWindowWidth(window.screen.width);
+    }, []);
 
     const handleChange = ({target:{ name, value }}) => {
       setForm({ ...form, [name]: value });
@@ -146,9 +152,14 @@ const CONTACT = () => {
                     </button>
                 </form>
             </div>
-            <div className="lg:w-[60%] sm:w-[100%] md:w-[80%]">
-                <FOX currentAnimation={currentAnimation}/>
-            </div>
+            {
+                windowWidth > 800 && (
+                    <div className="lg:w-[60%] sm:w-[100%] md:w-[80%]">
+                        <FOX currentAnimation={currentAnimation}/>
+                    </div>
+                )
+            }
+
             
         </div>
     )

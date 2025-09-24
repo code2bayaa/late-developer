@@ -14,7 +14,6 @@ const Navigation = () => {
     if (typeof window !== 'undefined') {
       gsap.registerPlugin(ScrollTrigger);
     }
-    if(window.screen.width > 800){
       if(containerRef.current){
         containerRef.current.querySelectorAll('button').forEach((btn) => {
           gsap.to(btn,{
@@ -57,7 +56,6 @@ const Navigation = () => {
             }
           })
         })
-      }
 
     }
 

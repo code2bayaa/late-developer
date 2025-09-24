@@ -383,12 +383,12 @@ const skills = [
           <h3 className="text-2xl font-semibold mb-8 gradient-text">
             Technologies & Tools
           </h3>
-          <div ref={skillsRef} className="flex flex-wrap justify-center gap-3">
+          <div ref={skillsRef} className="flex sm:w-[100%] flex-wrap justify-center gap-3">
             {skills.map(({name,type,imageUrl}, index) => (
               <Badge 
                 key={index} 
                 variant="secondary"
-                className="w-[25%] px-4 py-2 text-sm bg-primary/10 text-primary border-primary/20 hover:bg-primary/20 hover:glow-primary transition-all duration-300"
+                className="flex lg:flex-wrap md:flex-col sm:flex-col lg:w-[25%] md:w-[30%] sm:w-[45%] px-4 py-2 text-sm bg-primary/10 text-primary border-primary/20 hover:bg-primary/20 hover:glow-primary transition-all duration-300"
               >
                 <Image src={imageUrl} alt={name} width={100} height={100} className="w[10%] inline-block mr-2 mb-1" />
                 {name} | {type}
@@ -404,7 +404,7 @@ const skills = [
             {institutions.map(({title, company_name, points, icon, date}, idx) => (
               <div
                 key={idx}
-                className="min-w-[30%] m-[1%] bg-gradient-to-br from-[#f8f9fa] to-[#e9ecef] h-full flex flex-col items-center justify-center p-10"
+                className="md:min-w-[45%] sm:min-w-[98%] lg:min-w-[30%] m-[1%] bg-gradient-to-br from-[#f8f9fa] to-[#e9ecef] h-full flex flex-col items-center justify-center p-10"
               >
                 {/* <img src={icon} alt={title} className="w-[60%] h-[20%] object-contain rounded-xl shadow-lg" /> */}
                 <Image src={icon} alt={title} width={200} height={200} className="w-[200px] h-[200px] object-cover rounded-xl shadow-lg" />
