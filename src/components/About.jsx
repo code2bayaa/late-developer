@@ -388,7 +388,7 @@ const skills = [
               <Badge 
                 key={index} 
                 variant="secondary"
-                className="flex lg:flex-wrap md:flex-col sm:flex-col lg:w-[25%] md:w-[30%] sm:w-[45%] px-4 py-2 text-sm bg-primary/10 text-primary border-primary/20 hover:bg-primary/20 hover:glow-primary transition-all duration-300"
+                className="flex flex-wrap sm:min-h-[150px] md:min-h-[150px] lg:w-[25%] md:w-[30%] sm:w-[98%] px-4 py-2 text-sm bg-primary/10 text-primary border-primary/20 hover:bg-primary/20 hover:glow-primary transition-all duration-300"
               >
                 <Image src={imageUrl} alt={name} width={100} height={100} className="w[10%] inline-block mr-2 mb-1" />
                 {name} | {type}
@@ -404,7 +404,7 @@ const skills = [
             {institutions.map(({title, company_name, points, icon, date}, idx) => (
               <div
                 key={idx}
-                className="md:min-w-[45%] sm:min-w-[98%] lg:min-w-[30%] m-[1%] bg-gradient-to-br from-[#f8f9fa] to-[#e9ecef] h-full flex flex-col items-center justify-center p-10"
+                className="md:w-[45%] sm:w-[98%] lg:min-w-[30%] m-[1%] bg-gradient-to-br from-[#f8f9fa] to-[#e9ecef] h-full flex flex-col items-center justify-center p-10"
               >
                 {/* <img src={icon} alt={title} className="w-[60%] h-[20%] object-contain rounded-xl shadow-lg" /> */}
                 <Image src={icon} alt={title} width={200} height={200} className="w-[200px] h-[200px] object-cover rounded-xl shadow-lg" />
