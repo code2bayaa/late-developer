@@ -135,18 +135,18 @@ const PROJECTS = () => {
             </div>            
             
             {/* Main Preview Slider */}
-            <div className="w-[80%] h-[300px] mb-10">
+            <div className="lg:w-[80%] sm:w-[100%] md:w-[100%] h-[300px] mb-10">
                 <Swiper
                     modules={[Thumbs]}
                     thumbs={{ swiper: thumbsSwiper }}
                     spaceBetween={10}
-                    className="mb-4 rounded-2xl h-[300px] overflow-hidden"
+                    className="mb-4 lg:rounded-2xl h-[300px] overflow-hidden"
                 >
                     {projects.map(({icon,description,name,link}, i) => (
                         <SwiperSlide key={i} className=" h-[300px] lg:w-[60%] sm:w-[100%] md:w-[100%]">
                             <div className="w-[100%] h-[300px] flex flex-wrap">
-                                <img src={icon} alt={`slide ${i}`} className="lg:w-[60%] sm:w-[100%] md:w-[100%] h-[100%] object-cover" />
-                                <div className="lg:w-[40%] bg-zinc-900 text-[#fff] sm:w-[100%] px-4 py-4 md:w-[100%]">
+                                <img src={icon} alt={`slide ${i}`} className="w-[60%] h-[100%] object-cover" />
+                                <div className="w-[40%] bg-zinc-900 text-[#fff] px-4 py-4">
                                     <h1>{name}</h1>
                                     <article>{description}</article>
                                     <p>{link}</p>
