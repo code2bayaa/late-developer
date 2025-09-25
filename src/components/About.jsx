@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Code, Database, Globe, Smartphone } from 'lucide-react';
@@ -17,6 +17,11 @@ const About = () => {
   const skillsRef = useRef(null);
   const sectionInstitutionRef = useRef(null);
   const containerRef = useRef(null);
+  const [windowWidth, setWindowWidth] = useState(0);
+
+  useEffect(() => {
+    setWindowWidth(window.innerWidth);
+  }, []);
 
   useEffect(() => {
     const section = sectionInstitutionRef.current;
@@ -384,19 +389,36 @@ const skills = [
             Technologies & Tools
           </h3>
           <div ref={skillsRef} className="flex sm:w-[100%] flex-wrap justify-center gap-3">
-            {skills.map(({name,type,imageUrl}, index) => (
-              <Badge 
-                key={index} 
-                variant="secondary"
-                className="flex flex-wrap sm:min-h-[150px] md:min-h-[150px] lg:w-[25%] md:w-[30%] sm:w-[98%] px-4 py-2 text-sm bg-primary/10 text-primary border-primary/20 hover:bg-primary/20 hover:glow-primary transition-all duration-300"
-              >
-                <Image src={imageUrl} alt={name} width={100} height={100} className="w[10%] inline-block mr-2 mb-1" />
-                {name} | {type}
-              </Badge>
-            ))}
+            {skills.map(({name,type,imageUrl}, index) => 
+              <>
+              {
+                windowWidth > 768 ?
+                (
+                  <Badge 
+                    key={index} 
+                    variant="secondary"
+                    className="flex flex-wrap sm:min-h-[150px] md:min-h-[150px] lg:w-[25%] md:w-[30%] sm:w-[98%] px-4 py-2 text-sm bg-primary/10 text-primary border-primary/20 hover:bg-primary/20 hover:glow-primary transition-all duration-300"
+                  >
+                    <Image src={imageUrl} alt={name} width={100} height={100} className="w-[10%] inline-block mr-2 mb-1" />
+                    {name} | {type}
+                  </Badge>
+                )
+                :
+                (
+                  <div 
+                    key={index} 
+                    className="flex flex-wrap border-b-2 w-[100%] sm:w-[98%] px-4 py-2 text-sm bg-primary/10 text-primary border-primary/20 hover:bg-primary/20 hover:glow-primary transition-all duration-300"
+                  >
+                    <Image src={imageUrl} alt={name} width={100} height={100} className="w-[20%] inline-block mr-2 mb-1" />
+                    {name} | {type}
+                  </div>                  
+                )
+
+              }
+           </> )}
           </div>
         </div>
-        <section ref={sectionInstitutionRef} className="relative w-screen h-screen overflow-hidden">
+        <section ref={sectionInstitutionRef} className="relative w-screen h-auto overflow-hidden">
           <div
             ref={containerRef}
             className="flex w-[100%]"
@@ -404,9 +426,9 @@ const skills = [
             {institutions.map(({title, company_name, points, icon, date}, idx) => (
               <div
                 key={idx}
-                className="md:w-[45%] sm:w-[98%] lg:min-w-[30%] m-[1%] bg-gradient-to-br from-[#f8f9fa] to-[#e9ecef] h-full flex flex-col items-center justify-center p-10"
+                style={{width:windowWidth > 768 ? '30%' : '98%'}}
+                className="m-[1%] bg-gradient-to-br from-[#f8f9fa] to-[#e9ecef] h-auto flex flex-col items-center justify-center p-10"
               >
-                {/* <img src={icon} alt={title} className="w-[60%] h-[20%] object-contain rounded-xl shadow-lg" /> */}
                 <Image src={icon} alt={title} width={200} height={200} className="w-[200px] h-[200px] object-cover rounded-xl shadow-lg" />
                 <h2 className="text-2xl font-bold mt-4">{company_name}</h2>
                 <p className="text-[#000] mt-2 text-center max-w-md">{title}</p>

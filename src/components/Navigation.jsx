@@ -115,11 +115,11 @@ const Navigation = () => {
           {/* Mobile Navigation Toggle */}
           <Button
             variant="ghost"
-            size="sm"
+            size="lg"
             className="md:hidden"
             onClick={() => setIsOpen(!isOpen)}
           >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
+            {isOpen ? <X size={50} /> : <Menu size={50} />}
           </Button>
         </div>
 

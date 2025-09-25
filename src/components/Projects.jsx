@@ -135,20 +135,20 @@ const PROJECTS = () => {
             </div>            
             
             {/* Main Preview Slider */}
-            <div className="lg:w-[80%] sm:w-[100%] md:w-[100%] h-[300px] mb-10">
+            <div className="lg:w-[80%] sm:w-[100%] md:w-[100%] w-[100%] lg:h-[300px] sm:h-[100%] mb-10">
                 <Swiper
                     modules={[Thumbs]}
                     thumbs={{ swiper: thumbsSwiper }}
                     spaceBetween={10}
-                    className="mb-4 lg:rounded-2xl h-[300px] overflow-hidden"
+                    className="mb-4 lg:rounded-2xl lg:h-[300px] sm:h-[100%] overflow-hidden"
                 >
                     {projects.map(({icon,description,name,link}, i) => (
-                        <SwiperSlide key={i} className=" h-[300px] lg:w-[60%] sm:w-[100%] md:w-[100%]">
-                            <div className="w-[100%] h-[300px] flex flex-wrap">
-                                <img src={icon} alt={`slide ${i}`} className="w-[60%] h-[100%] object-cover" />
-                                <div className="w-[40%] bg-zinc-900 text-[#fff] px-4 py-4">
+                        <SwiperSlide key={i} className="w-[100%] lg:h-[300px] sm:h-[100%] h-[100%] lg:w-[60%] sm:w-[100%] md:w-[100%]">
+                            <div className="w-[100%] lg:h-[300px] sm:h-[100%] h-[100%] flex lg:flex-wrap sm:flex-col">
+                                <img src={icon} alt={`slide ${i}`} className="lg:w-[60%] sm:w-[100%] h-[100%] object-cover" />
+                                <div className="lg:w-[40%] sm:w-[100%] md:w-[100%] bg-zinc-900 text-[#fff] md:text-[90%] sm:text-[80%] px-4 py-4">
                                     <h1>{name}</h1>
-                                    <article>{description}</article>
+                                    <article >{description}</article>
                                     <p>{link}</p>
                                 </div>
                             </div>
