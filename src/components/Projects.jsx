@@ -34,6 +34,12 @@ const PROJECTS = () => {
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
     const [timeRange, setTimeRange] = useState("90d")
     const [chartData, setChartData] = useState(null)
+    const [windowWidth, setWindowWidth] = useState(null);
+
+    useEffect(() => {
+        // Set initial window width
+        setWindowWidth(window.screen.width);
+    }, []);
 
 
     useEffect(() => {
@@ -146,7 +152,7 @@ const PROJECTS = () => {
                         <SwiperSlide key={i} className="w-[100%] lg:h-[300px] sm:h-[100%] h-[100%] lg:w-[60%] sm:w-[100%] md:w-[100%]">
                             <div className="w-[100%] lg:h-[300px] sm:h-[100%] h-[100%] flex lg:flex-wrap sm:flex-col">
                                 <img src={icon} alt={`slide ${i}`} className="lg:w-[60%] sm:w-[100%] h-[100%] object-cover" />
-                                <div className="lg:w-[40%] sm:w-[100%] md:w-[100%] bg-zinc-900 text-[#fff] md:text-[90%] sm:text-[80%] px-4 py-4">
+                                <div style={{width:windowWidth > 800?"40%":"100%"}} className="bg-zinc-900 text-[#fff] md:text-[90%] sm:text-[80%] px-4 py-4">
                                     <h1>{name}</h1>
                                     <article >{description}</article>
                                     <p>{link}</p>

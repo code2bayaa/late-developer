@@ -418,7 +418,12 @@ const skills = [
            </> )}
           </div>
         </div>
-        <section ref={sectionInstitutionRef} className="relative w-screen h-auto overflow-hidden">
+        <section ref={sectionInstitutionRef} className="relative w-screen h-[80%] overflow-hidden">
+          <div className="w-[100%] text-center mb-16">
+            <h2 className="text-4xl sm:text-5xl font-bold mb-6">
+              Institutions
+            </h2>
+          </div>
           <div
             ref={containerRef}
             className="flex w-[100%]"
@@ -427,12 +432,12 @@ const skills = [
               <div
                 key={idx}
                 style={{width:windowWidth > 768 ? '30%' : '98%'}}
-                className="m-[1%] bg-gradient-to-br from-[#f8f9fa] to-[#e9ecef] h-auto flex flex-col items-center justify-center p-10"
+                className="m-[1%] bg-gradient-to-br from-[#f8f9fa] to-[#e9ecef] h-[100%] flex flex-col items-center justify-center p-10"
               >
                 <Image src={icon} alt={title} width={200} height={200} className="w-[200px] h-[200px] object-cover rounded-xl shadow-lg" />
                 <h2 className="text-2xl font-bold mt-4">{company_name}</h2>
                 <p className="text-[#000] mt-2 text-center max-w-md">{title}</p>
-                <p className="text-[#000] mt-2 text-center max-w-md">{date}</p>
+                {/* <p className="text-[#000] mt-2 text-center max-w-md">{date}</p> */}
                 <ul className="list-disc list-inside mt-4 max-w-md text-[#000]">
                   {points.map((point, index) => (
                     <li key={index} className="mb-2">{point}</li>
