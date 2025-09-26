@@ -418,7 +418,7 @@ const skills = [
            </> )}
           </div>
         </div>
-        <section ref={sectionInstitutionRef} className="relative w-screen h-[80%] overflow-hidden">
+        <section ref={sectionInstitutionRef} className="relative w-screen h-full overflow-hidden">
           <div className="w-[100%] text-center mb-16">
             <h2 className="text-4xl sm:text-5xl font-bold mb-6">
               Institutions
@@ -431,7 +431,7 @@ const skills = [
             {institutions.map(({title, company_name, points, icon, date}, idx) => (
               <div
                 key={idx}
-                style={{width:windowWidth > 768 ? '30%' : '98%'}}
+                style={{minWidth:windowWidth > 768 ? '30%' : '98%'}}
                 className="m-[1%] bg-gradient-to-br from-[#f8f9fa] to-[#e9ecef] h-[100%] flex flex-col items-center justify-center p-10"
               >
                 <Image src={icon} alt={title} width={200} height={200} className="w-[200px] h-[200px] object-cover rounded-xl shadow-lg" />

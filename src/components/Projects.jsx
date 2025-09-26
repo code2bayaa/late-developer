@@ -141,16 +141,16 @@ const PROJECTS = () => {
             </div>            
             
             {/* Main Preview Slider */}
-            <div className="lg:w-[80%] sm:w-[100%] md:w-[100%] w-[100%] lg:h-[300px] sm:h-[100%] mb-10">
+            <div className="w-[80%] lg:h-[300px] sm:h-[100%] mb-10">
                 <Swiper
                     modules={[Thumbs]}
                     thumbs={{ swiper: thumbsSwiper }}
                     spaceBetween={10}
-                    className="mb-4 lg:rounded-2xl lg:h-[300px] sm:h-[100%] overflow-hidden"
+                    className="mb-4 lg:rounded-2xl lg:h-[300px] w-[100%] sm:h-[100%] overflow-hidden"
                 >
                     {projects.map(({icon,description,name,link}, i) => (
                         <SwiperSlide key={i} className="w-[100%] lg:h-[300px] sm:h-[100%] h-[100%] lg:w-[60%] sm:w-[100%] md:w-[100%]">
-                            <div className="w-[100%] lg:h-[300px] sm:h-[100%] h-[100%] flex lg:flex-wrap sm:flex-col">
+                            <div className="w-[100%] lg:h-[300px] sm:h-[100%] h-[100%] flex flex-wrap">
                                 <img src={icon} alt={`slide ${i}`} className="lg:w-[60%] sm:w-[100%] h-[100%] object-cover" />
                                 <div style={{width:windowWidth > 800?"40%":"100%"}} className="bg-zinc-900 text-[#fff] md:text-[90%] sm:text-[80%] px-4 py-4">
                                     <h1>{name}</h1>
