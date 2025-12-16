@@ -2,7 +2,7 @@
 import React, { useRef, useEffect } from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
 
-import scene from "../assets/3D/fox.glb";
+const scene = "/3D/fox.glb";
 
 export function FoxModel({ currentAnimation, ...props }) {
   const group = useRef();

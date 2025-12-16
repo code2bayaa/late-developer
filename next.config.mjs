@@ -20,5 +20,6 @@ const nextConfig = {
   images: {
     domains: ['localhost','brianwekesa.netlify.app','late-developer.netlify.app'],
   },
+  turbopack: {}
 };
 export default nextConfig;
