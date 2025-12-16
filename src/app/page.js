@@ -8,6 +8,7 @@ const Animations = dynamic(() => import("@/components/Animations"), {
 });
 import Projects from '@/components/Projects';
 import Contact from '@/components/Contact';
+// import INSTITUTIONS from '@/components/Institutions';
 
 const Index = () => {
   return (
@@ -15,6 +16,7 @@ const Index = () => {
         <Navigation />
         <Home />
         <About />
+        {/* <INSTITUTIONS /> */}
         <Animations />
         <Projects />
         <Contact />

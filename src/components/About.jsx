@@ -7,9 +7,9 @@ import { Code, Database, Globe, Smartphone } from 'lucide-react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Image from 'next/image';
-if (typeof window !== 'undefined') {
-  gsap.registerPlugin(ScrollTrigger);
-}
+// if (typeof window !== 'undefined') {
+//   gsap.registerPlugin(ScrollTrigger);
+// }
 
 const About = () => {
   const sectionRef = useRef(null);
@@ -23,34 +23,140 @@ const About = () => {
     setWindowWidth(window.innerWidth);
   }, []);
 
+  // useEffect(() => {
+  //   const section = sectionInstitutionRef.current;
+  //   const container = containerRef.current;
+  //   const totalWidth = container.scrollWidth; // total scroll width
+  //   const windowWidth = window.innerWidth;
+
+  //   gsap.to(container, {
+  //     x: -(totalWidth - windowWidth), // scroll full width
+  //     ease: "none",
+  //     scrollTrigger: {
+  //       trigger: section,
+  //       start: "top top",
+  //       end: () => `=${totalWidth - windowWidth}`, // scroll length
+  //       scrub: true,
+  //       pin: true,
+  //       anticipatePin: 1,
+  //       markers:false,
+  //       scroller: "#build",
+  //       markers: true,
+  //     },
+  //   });
+
+  //   return () => {
+  //     ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+  //   };
+  // }, []);
+  
+  // useEffect(() => {
+  //   if (!sectionInstitutionRef.current || !containerRef.current) return;
+
+  //   const ctx = gsap.context(() => {
+  //     const section = sectionInstitutionRef.current;
+  //     const container = containerRef.current;
+
+  //     // force layout calculation
+  //     const getScrollAmount = () =>
+  //       container.scrollWidth - window.innerWidth;
+
+  //     gsap.set(container, { x: 0 });
+
+  //     gsap.to(container, {
+  //       x: () => -getScrollAmount(),
+  //       ease: "none",
+  //       scrollTrigger: {
+  //         trigger: section,
+  //         start: "top top",        // GSAP starts HERE
+  //         end: () => `=${getScrollAmount()}`,
+  //         scrub: true,
+  //         pin: true,
+  //         anticipatePin: 1,
+  //         invalidateOnRefresh: true,
+  //         scroller: "#build",
+  //         markers: true,           // remove in production
+  //       },
+  //     });
+  //   });
+
+  //   // refresh on resize
+  //   ScrollTrigger.addEventListener("refreshInit", () =>
+  //     gsap.set(containerRef.current, { x: 0 })
+  //   );
+
+  //   ScrollTrigger.refresh();
+
+  //   return () => {
+  //     ctx.revert();
+  //     ScrollTrigger.getAll().forEach(t => t.kill());
+  //   };
+  // }, []);
+
   useEffect(() => {
+    if (!sectionInstitutionRef.current || !containerRef.current) return;
+
+    gsap.registerPlugin(ScrollTrigger);
+    console.log("institutions...")
     const section = sectionInstitutionRef.current;
     const container = containerRef.current;
-    const totalWidth = container.scrollWidth; // total scroll width
-    const windowWidth = window.innerWidth;
 
-    gsap.to(container, {
-      x: -(totalWidth - windowWidth), // scroll full width
-      ease: "none",
-      scrollTrigger: {
-        trigger: section,
-        start: "top top",
-        end: () => `+=${totalWidth - windowWidth}`, // scroll length
-        scrub: true,
-        pin: true,
-        anticipatePin: 1,
-        markers:false,
-        scroller: "#build",
-      },
-    });
+    const onRefreshInit = () => gsap.set(container, { x: 0 });
 
-    return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    const init = () => {
+      // cleanup any existing triggers
+      ScrollTrigger.getAll().forEach((t) => t.kill());
+      gsap.set(container, { x: 0 });
+
+      // visible area width should be the section width (not full window when layout is constrained)
+      const visibleWidth = section.clientWidth;
+      const totalWidth = container.scrollWidth;
+      const scrollAmount = totalWidth - visibleWidth;
+
+      // enable GSAP horizontal scroll only on wide screens when there's overflow
+      if (scrollAmount > 20) {
+        gsap.to(container, {
+          x: -scrollAmount,
+          ease: "none",
+          scrollTrigger: {
+            trigger: section,
+            start: "top top",
+            end: () => `=${scrollAmount}`,
+            scrub: true,
+            pin: true,
+            anticipatePin: 1,
+            invalidateOnRefresh: true,
+            scroller:"#build",
+            // use body (default) so it works reliably across layouts
+            // remove scroller option unless you have a custom scroller element
+            markers: false,
+          },
+        });
+      } else {
+        // reset for small screens or when no overflow
+        gsap.set(container, { x: 0, clearProps: "transform" });
+        ScrollTrigger.refresh();
+      }
     };
-  }, []);
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
 
+    // init once and on resize / refresh
+    init();
+    window.addEventListener("resize", init);
+    ScrollTrigger.addEventListener("refreshInit", onRefreshInit);
+
+    // cleanup
+    return () => {
+      window.removeEventListener("resize", init);
+      ScrollTrigger.removeEventListener("refreshInit", onRefreshInit);
+      ScrollTrigger.getAll().forEach((t) => t.kill());
+      gsap.set(container, { x: 0 });
+    };
+  },[gsap])
+  
+  useEffect(() => {
+    // if (typeof window === 'undefined') return;
+
+    gsap.registerPlugin(ScrollTrigger);
     const cards = cardsRef.current?.children;
     const skills = skillsRef.current?.children;
 
@@ -95,7 +201,7 @@ const About = () => {
         }
       );
     }
-  }, []);
+  }, [gsap]);
 
   const expertiseAreas = [
     {
@@ -358,7 +464,7 @@ const skills = [
             About <span className="gradient-text">Me</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            I'm a passionate software engineer with 5+ years of experience building 
+            I'm a passionate software engineer with 5 years of experience building 
             scalable web applications and innovative digital solutions. I love turning 
             complex problems into simple, beautiful, and intuitive solutions.
           </p>
@@ -390,39 +496,27 @@ const skills = [
           <h3 className="text-2xl font-semibold mb-8 gradient-text">
             Technologies & Tools
           </h3>
-          <div ref={skillsRef} className="flex w-[100%] flex-wrap justify-center gap-3">
+          <div ref={skillsRef} className="w-[100%] flex flex-wrap justify-center gap-3">
             {skills.map(({name,type,imageUrl}, index) => 
-              <>
-              {
-                windowWidth > 768 ?
-                (
-                  <div 
-                    key={index} 
-                    variant="secondary"
-                    className="flex rounded-md min-h-[150px] justify-items-center items-center-safe border-1 flex-wrap w-[25%] m-[1%] px-4 py-2 text-sm bg-primary/10 text-primary border-primary/20 hover:bg-primary/20 hover:glow-primary transition-all duration-300"
-                  >
-                    <Image src={imageUrl} alt={name} width={100} height={100} className="w-[20%] inline-block mr-2 mb-1" />
-                    {name} | {type}
-                  </div>
-                )
-                :
-                (
-                  <div 
-                    key={index} 
-                    className="flex flex-wrap border-b-2 w-[100%] px-4 py-2 text-sm bg-primary/10 text-primary border-primary/20 hover:bg-primary/20 hover:glow-primary transition-all duration-300"
-                  >
-                    <Image src={imageUrl} alt={name} width={100} height={100} className="w-[20%] inline-block mr-2 mb-1" />
-                    {name} | {type}
-                  </div>                  
-                )
-
-              }
-           </> )}
+              <div 
+                key={index} 
+                variant="secondary"
+                className={
+                  windowWidth > 768 ? "flex rounded-md min-h-[150px] justify-items-center items-center-safe border-1 flex-wrap w-[25%] m-[1%] px-4 py-2 text-sm bg-primary/10 text-primary border-primary/20 hover:bg-primary/20 hover:glow-primary transition-all duration-300"
+                    : 
+                    "flex flex-wrap border-b-2 w-[100%] px-4 py-2 text-sm bg-primary/10 text-primary border-primary/20 hover:bg-primary/20 hover:glow-primary transition-all duration-300"
+                  }
+              
+                >
+                <Image src={imageUrl} alt={name} width={100} height={100} className="w-[20%] inline-block mr-2 mb-1" />
+                {name} | {type}
+              </div>
+            )}
           </div>
         </div>
 <section
   ref={sectionInstitutionRef}
-  className="relative w-screen h-screen overflow-hidden"
+  className="relative w-[100%] h-screen overflow-hidden"
 >
   <div className="w-full text-center mb-16">
     <h2 className="text-4xl sm:text-5xl font-bold mb-6">
@@ -432,7 +526,7 @@ const skills = [
 
   <div
     ref={containerRef}
-    className="flex h-full w-max" // <- important: horizontal flow
+    className="flex h-full w-max duration-500 snap-x" // <- important: horizontal flow
   >
     {institutions.map(({ title, company_name, points, icon }, idx) => (
       <div
